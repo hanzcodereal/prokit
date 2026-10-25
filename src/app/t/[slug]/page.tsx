@@ -10,14 +10,16 @@ import { notFound } from "next/navigation";
 import { useMemo, useState } from "react";
 
 export default function ToolPage({ params }: { params: { slug: string } }) {
-  const tool = useMemo(() => getTool(params.slug), [params.slug]);
+  const found = useMemo(() => getTool(params.slug), [params.slug]);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [result, setResult] = useState<unknown>(null);
 
-  if (!tool) {
+  if (!found) {
     notFound();
     return null;
   }
+
+  const tool = found;
 
   function addLog(level: LogEntry["level"], text: string) {
     setLogs((l) => [...l, makeLog(level, text)]);
@@ -70,4 +72,4 @@ export default function ToolPage({ params }: { params: { slug: string } }) {
       </section>
     </main>
   );
-        }
+                        }
