@@ -15,4 +15,4 @@ export default function ResultView({ result }: { result: unknown }) {
       {JSON.stringify(result, null, 2)}
     </pre>
   );
-      }
+}
