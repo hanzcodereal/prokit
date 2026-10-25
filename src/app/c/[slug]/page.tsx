@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 export default function CategoryPage({ params }: { params: { slug: string } }) {
   const cat = getCategory(params.slug);
-  if (!cat) notFound();
+  if (!cat) return notFound();
 
   return (
     <main className="min-h-screen">
@@ -25,4 +25,4 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
       </section>
     </main>
   );
-          }
+}
