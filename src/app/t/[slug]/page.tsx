@@ -14,7 +14,10 @@ export default function ToolPage({ params }: { params: { slug: string } }) {
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [result, setResult] = useState<unknown>(null);
 
-  if (!tool) notFound();
+  if (!tool) {
+    notFound();
+    return null;
+  }
 
   function addLog(level: LogEntry["level"], text: string) {
     setLogs((l) => [...l, makeLog(level, text)]);
@@ -67,4 +70,4 @@ export default function ToolPage({ params }: { params: { slug: string } }) {
       </section>
     </main>
   );
-    }
+        }
