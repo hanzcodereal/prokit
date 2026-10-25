@@ -22,4 +22,4 @@ export async function listDomains(): Promise<ToolResult> {
   } catch (e: any) {
     return { time: `${Date.now() - start}ms`, status: false, error: e?.response?.data?.error || e?.message };
   }
-  }
+}
