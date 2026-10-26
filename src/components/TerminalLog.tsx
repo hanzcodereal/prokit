@@ -21,15 +21,15 @@ export default function TerminalLog({ logs }: { logs: LogEntry[] }) {
             <span className="shrink-0 text-[#5b87b0]">[{l.at}]</span>
             <span
               className={`shrink-0 font-bold ${
-                l.level === "ok" ? "text-[#28e08a]" : l.level === "err" ? "text-[#ff6b81]" : "text-[#00b3ff]"
+                l.level === "ok" ? "text-[#28e08a]" : l.level === "err" ? "text-[#ff6b81]" : "text-[#7cc8ff]"
               }`}
             >
               {l.level.toUpperCase()}
             </span>
-            <span className="whitespace-pre-wrap break-all text-[#c9eaff]">{l.text}</span>
+            <span className="whitespace-pre-wrap break-all text-[#d6efff]">{l.text}</span>
           </div>
         ))
       )}
     </div>
   );
-}
+              }
