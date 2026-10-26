@@ -17,12 +17,8 @@ export type CategoryDef = {
 };
 
 export const categories: CategoryDef[] = [
-  { slug: "spam-otp", title: "Spam OTP · WhatsApp & SMS", tools: ["otp"] },
-  { slug: "installer", title: "Installer · VPS Protection", tools: ["protect"] },
-  { slug: "bug-wa", title: "Bug WhatsApp · WhatsApp Tools", tools: ["senders", "pairsender", "delsender", "bug"] },
-  { slug: "tools", title: "Tools · Utility Tools", tools: ["skip", "apk"] },
-  { slug: "premium", title: "Premium Gratis · Alight Motion", tools: ["alight"] },
-  { slug: "subdomain", title: "Subdomain · Cloudflare DNS", tools: ["list", "create", "history"] },
+  { slug: "spam-otp", title: "Spam OTP", tools: ["otp"] },
+  { slug: "bug-wa", title: "Bug WhatsApp", tools: ["senders", "pairsender", "delsender", "bug"] },
 ];
 
 export const tools: Record<string, ToolDef> = {
@@ -31,19 +27,8 @@ export const tools: Record<string, ToolDef> = {
     title: "Spam OTP",
     category: "spam-otp",
     api: "/api/otp",
-    fields: [{ name: "phones", placeholder: "628xxx,628yyy,628zzz" }],
+    fields: [{ name: "phones", placeholder: "628xxx" }],
     buttonLabel: "Send OTP",
-  },
-  protect: {
-    slug: "protect",
-    title: "VPS Protection",
-    category: "installer",
-    api: "/api/protect",
-    fields: [
-      { name: "host", placeholder: "host / ip" },
-      { name: "password", placeholder: "password", type: "password" },
-    ],
-    buttonLabel: "Install",
   },
   senders: {
     slug: "senders",
@@ -81,65 +66,6 @@ export const tools: Record<string, ToolDef> = {
     ],
     buttonLabel: "Send Bug",
     extra: "bugType",
-  },
-  skip: {
-    slug: "skip",
-    title: "Skip Link",
-    category: "tools",
-    api: "/api/skip",
-    fields: [{ name: "url", placeholder: "https://..." }],
-    buttonLabel: "Resolve",
-  },
-  apk: {
-    slug: "apk",
-    title: "Web → APK",
-    category: "tools",
-    api: "/api/apk",
-    fields: [
-      { name: "url", placeholder: "https://..." },
-      { name: "name", placeholder: "app name" },
-    ],
-    buttonLabel: "Build",
-  },
-  alight: {
-    slug: "alight",
-    title: "Alight Motion",
-    category: "premium",
-    api: "/api/alight",
-    fields: [
-      { name: "email", placeholder: "email", type: "email" },
-      { name: "verifyLink", placeholder: "verify link (opsional)" },
-    ],
-    buttonLabel: "Send",
-  },
-  list: {
-    slug: "list",
-    title: "List Domains",
-    category: "subdomain",
-    api: "/api/list",
-    fields: [],
-    buttonLabel: "Load",
-  },
-  create: {
-    slug: "create",
-    title: "Create Subdomain",
-    category: "subdomain",
-    api: "/api/create",
-    fields: [
-      { name: "domain", placeholder: "domain.com" },
-      { name: "ip", placeholder: "1.2.3.4" },
-      { name: "panelHost", placeholder: "panel host" },
-      { name: "nodeHost", placeholder: "node host" },
-    ],
-    buttonLabel: "Create",
-  },
-  history: {
-    slug: "history",
-    title: "Subdomain History",
-    category: "subdomain",
-    api: "/api/history",
-    fields: [],
-    buttonLabel: "Load",
   },
 };
 
