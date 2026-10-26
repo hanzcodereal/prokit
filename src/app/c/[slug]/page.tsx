@@ -11,9 +11,9 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
     <main className="min-h-screen">
       <Header />
       <section className="mx-auto w-full max-w-6xl px-4 pb-16">
-        <div className="mb-6">
-          <div className="text-xs text-neutral-500">Kategori</div>
-          <h1 className="text-2xl font-semibold tracking-tight">{cat.title}</h1>
+        <div className="mb-8">
+          <div className="text-xs uppercase tracking-[0.2em] text-slate-500">Kategori</div>
+          <h1 className="font-orbitron text-2xl font-bold tracking-wide text-slate-900">{cat.title}</h1>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {cat.tools.map((slug) => {
