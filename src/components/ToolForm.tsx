@@ -37,7 +37,7 @@ export default function ToolForm({ fields, buttonLabel = "Run", extra, onSubmit 
           placeholder={f.placeholder}
           value={values[f.name] || ""}
           onChange={(e) => setValues((v) => ({ ...v, [f.name]: e.target.value }))}
-          className="w-full rounded-lg border border-[#1f1f24] bg-[#0a0a0b] px-3 py-2 text-sm text-neutral-200 placeholder:text-neutral-600 focus:border-[#7c5cff] focus:outline-none"
+          className="neon-input w-full rounded-xl px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400"
         />
       ))}
 
@@ -48,8 +48,10 @@ export default function ToolForm({ fields, buttonLabel = "Run", extra, onSubmit 
               key={t}
               type="button"
               onClick={() => setBugType(t)}
-              className={`flex-1 rounded-lg border px-3 py-2 text-xs transition ${
-                bugType === t ? "border-[#7c5cff] bg-[#7c5cff]/10 text-neutral-100" : "border-[#1f1f24] text-neutral-400"
+              className={`flex-1 rounded-xl border px-3 py-2 text-xs transition ${
+                bugType === t
+                  ? "border-transparent bg-gradient-to-r from-[#00b3ff] to-[#7c5cff] text-white shadow-[0_6px_20px_-8px_rgba(0,179,255,0.7)]"
+                  : "border-white/80 bg-white/40 text-slate-600 hover:border-[#00b3ff]/50"
               }`}
             >
               {t}
@@ -65,8 +67,10 @@ export default function ToolForm({ fields, buttonLabel = "Run", extra, onSubmit 
               key={t}
               type="button"
               onClick={() => setSenderMode(t)}
-              className={`flex-1 rounded-lg border px-3 py-2 text-xs transition ${
-                senderMode === t ? "border-[#7c5cff] bg-[#7c5cff]/10 text-neutral-100" : "border-[#1f1f24] text-neutral-400"
+              className={`flex-1 rounded-xl border px-3 py-2 text-xs transition ${
+                senderMode === t
+                  ? "border-transparent bg-gradient-to-r from-[#00b3ff] to-[#7c5cff] text-white shadow-[0_6px_20px_-8px_rgba(0,179,255,0.7)]"
+                  : "border-white/80 bg-white/40 text-slate-600 hover:border-[#00b3ff]/50"
               }`}
             >
               {t}
@@ -78,7 +82,7 @@ export default function ToolForm({ fields, buttonLabel = "Run", extra, onSubmit 
       <button
         type="submit"
         disabled={busy}
-        className="w-full rounded-lg bg-[#7c5cff] px-3 py-2 text-sm font-medium text-white transition hover:bg-[#6a4bff] disabled:opacity-50"
+        className="neon-btn w-full rounded-xl px-3 py-2.5 text-sm font-semibold"
       >
         {busy ? "Running..." : buttonLabel}
       </button>
