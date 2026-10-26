@@ -35,11 +35,8 @@ export default function ToolPage({ params }: { params: { slug: string } }) {
       });
       const data = await res.json();
       setResult(data);
-      if (data && data.status) {
-        addLog("ok", `${tool.slug} ok · ${data.time || ""}`);
-      } else {
-        addLog("err", `${tool.slug} fail · ${(data && data.error) || "unknown"}`);
-      }
+      if (data && data.status) addLog("ok", `${tool.slug} ok · ${data.time || ""}`);
+      else addLog("err", `${tool.slug} fail · ${(data && data.error) || "unknown"}`);
     } catch (e: any) {
       addLog("err", `${tool.slug} error · ${e?.message || "network"}`);
     }
@@ -49,13 +46,13 @@ export default function ToolPage({ params }: { params: { slug: string } }) {
     <main className="min-h-screen">
       <Header />
       <section className="mx-auto w-full max-w-6xl px-4 pb-16">
-        <div className="mb-4">
-          <div className="text-xs text-neutral-500">Tool</div>
-          <h1 className="text-2xl font-semibold tracking-tight">{tool.title}</h1>
+        <div className="mb-6">
+          <div className="text-xs uppercase tracking-[0.2em] text-slate-500">Tool</div>
+          <h1 className="font-orbitron text-2xl font-bold tracking-wide text-slate-900">{tool.title}</h1>
         </div>
 
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <div className="rounded-2xl border border-[#1f1f24] bg-[#111114] p-5">
+          <div className="glass rounded-2xl p-5">
             <ToolForm
               fields={tool.fields}
               buttonLabel={tool.buttonLabel}
@@ -64,12 +61,14 @@ export default function ToolPage({ params }: { params: { slug: string } }) {
             />
             <ResultView result={result} />
           </div>
-          <div className="rounded-2xl border border-[#1f1f24] bg-[#111114] p-5">
-            <div className="mb-3 text-sm font-semibold text-neutral-200">Terminal</div>
+          <div className="glass rounded-2xl p-5">
+            <div className="mb-3 font-orbitron text-sm font-semibold tracking-wide text-slate-800">
+              Terminal
+            </div>
             <TerminalLog logs={logs} />
           </div>
         </div>
       </section>
     </main>
   );
-                        }
+}
