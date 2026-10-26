@@ -71,4 +71,4 @@ export default function ToolPage({ params }: { params: { slug: string } }) {
       </section>
     </main>
   );
-}
+    }
