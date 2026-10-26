@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
+import { Orbitron, Exo_2 } from "next/font/google";
 import "./globals.css";
 
+const orbitron = Orbitron({ subsets: ["latin"], variable: "--font-orbitron", weight: ["500", "700", "900"] });
+const exo = Exo_2({ subsets: ["latin"], variable: "--font-exo" });
+
 export const metadata: Metadata = {
-  title: "ProKit",
-  description: "ProKit — All Tools",
+  title: "RotSec",
+  description: "RotSec — All Tools",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id">
-      <body className="min-h-screen bg-[#0a0a0b] text-neutral-200">{children}</body>
+    <html lang="id" className={`${orbitron.variable} ${exo.variable}`}>
+      <body className="min-h-screen font-exo">{children}</body>
     </html>
   );
 }
