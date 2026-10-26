@@ -4,11 +4,7 @@ import { categories } from "@/lib/catalog";
 
 const info: Record<string, string> = {
   "spam-otp": "OTP · WhatsApp & SMS",
-  installer: "VPS Protection",
-  "bug-wa": "Bug WA · WhatsApp Tools",
-  tools: "Utility Tools",
-  premium: "Alight Motion",
-  subdomain: "Cloudflare DNS",
+  "bug-wa": "WhatsApp Tools",
 };
 
 export default function HomePage() {
