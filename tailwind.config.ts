@@ -4,14 +4,15 @@ const config: Config = {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
-      colors: {
-        bg: "#0a0a0b",
-        panel: "#111114",
-        border: "#1f1f24",
-        accent: "#7c5cff",
-        accent2: "#22d3ee",
+      fontFamily: {
+        orbitron: ["var(--font-orbitron)", "sans-serif"],
+        exo: ["var(--font-exo)", "sans-serif"],
+        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
-      fontFamily: { mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"] },
+      colors: {
+        neon: "#00b3ff",
+        neon2: "#7c5cff",
+      },
     },
   },
   plugins: [],
