@@ -62,13 +62,10 @@ export default function ToolPage({ params }: { params: { slug: string } }) {
             <ResultView result={result} />
           </div>
           <div className="glass rounded-2xl p-5">
-            <div className="mb-3 font-orbitron text-sm font-semibold tracking-wide text-slate-800">
-              Terminal
-            </div>
             <TerminalLog logs={logs} />
           </div>
         </div>
       </section>
     </main>
   );
-    }
+            }
