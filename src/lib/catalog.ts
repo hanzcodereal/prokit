@@ -7,7 +7,7 @@ export type ToolDef = {
   api: string;
   fields: Field[];
   buttonLabel?: string;
-  extra?: "bugType" | "senderMode";
+  extra?: "bugType" | "senderMode" | "reportReason";
 };
 
 export type CategoryDef = {
@@ -19,6 +19,7 @@ export type CategoryDef = {
 export const categories: CategoryDef[] = [
   { slug: "spam-otp", title: "Spam OTP", tools: ["otp"] },
   { slug: "bug-wa", title: "Bug WhatsApp", tools: ["senders", "pairsender", "delsender", "bug"] },
+  { slug: "report-ban", title: "Report Banned", tools: ["reportban"] },
 ];
 
 export const tools: Record<string, ToolDef> = {
@@ -27,7 +28,7 @@ export const tools: Record<string, ToolDef> = {
     title: "Spam OTP",
     category: "spam-otp",
     api: "/api/otp",
-    fields: [{ name: "phones", placeholder: "628xxx" }],
+    fields: [{ name: "phones", placeholder: "628xxx,628yyy,628zzz" }],
     buttonLabel: "Send OTP",
   },
   senders: {
@@ -67,6 +68,18 @@ export const tools: Record<string, ToolDef> = {
     buttonLabel: "Send Bug",
     extra: "bugType",
   },
+  reportban: {
+    slug: "reportban",
+    title: "Report Banned",
+    category: "report-ban",
+    api: "/api/reportban",
+    fields: [
+      { name: "target", placeholder: "@username atau https://t.me/username" },
+      { name: "thread", placeholder: "thread (default 25)" },
+    ],
+    buttonLabel: "Report",
+    extra: "reportReason",
+  },
 };
 
 export function getTool(slug: string): ToolDef | undefined {
@@ -75,4 +88,4 @@ export function getTool(slug: string): ToolDef | undefined {
 
 export function getCategory(slug: string): CategoryDef | undefined {
   return categories.find((c) => c.slug === slug);
-}
+      }
