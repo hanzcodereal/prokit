@@ -5,14 +5,17 @@ import type { Field } from "@/lib/catalog";
 type Props = {
   fields: Field[];
   buttonLabel?: string;
-  extra?: "bugType" | "senderMode";
+  extra?: "bugType" | "senderMode" | "reportReason";
   onSubmit: (values: Record<string, string>) => Promise<void>;
 };
+
+const REASONS = ["spam", "fake", "violence", "porn", "childAbuse", "copyright", "personal"];
 
 export default function ToolForm({ fields, buttonLabel = "Run", extra, onSubmit }: Props) {
   const [values, setValues] = useState<Record<string, string>>({});
   const [bugType, setBugType] = useState("delay");
   const [senderMode, setSenderMode] = useState("code");
+  const [reason, setReason] = useState("spam");
   const [busy, setBusy] = useState(false);
 
   async function submit(e: FormEvent) {
@@ -22,6 +25,7 @@ export default function ToolForm({ fields, buttonLabel = "Run", extra, onSubmit 
       const payload = { ...values };
       if (extra === "bugType") payload.type = bugType;
       if (extra === "senderMode") payload.mode = senderMode;
+      if (extra === "reportReason") payload.reason = reason;
       await onSubmit(payload);
     } finally {
       setBusy(false);
@@ -79,6 +83,20 @@ export default function ToolForm({ fields, buttonLabel = "Run", extra, onSubmit 
         </div>
       )}
 
+      {extra === "reportReason" && (
+        <select
+          value={reason}
+          onChange={(e) => setReason(e.target.value)}
+          className="neon-input w-full rounded-xl px-3 py-2.5 text-sm text-slate-800"
+        >
+          {REASONS.map((r) => (
+            <option key={r} value={r}>
+              {r}
+            </option>
+          ))}
+        </select>
+      )}
+
       <button
         type="submit"
         disabled={busy}
@@ -88,4 +106,4 @@ export default function ToolForm({ fields, buttonLabel = "Run", extra, onSubmit 
       </button>
     </form>
   );
-      }
+                }
